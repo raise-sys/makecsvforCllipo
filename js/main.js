@@ -36,7 +36,7 @@ const make_row = (line, tag) => {
     });
     i=0;
     line.forEach(label => {
-        if(i===5){
+        if(i===16){
           tr.appendChild(make_col(label, tag));
         }
         i++;
