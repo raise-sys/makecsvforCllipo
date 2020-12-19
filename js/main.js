@@ -25,8 +25,8 @@ const make_col = (label, tag) => {
     return col;
 }
 const make_row = (line, tag) => {
-    i=0;
     const tr = document.createElement('tr');
+    i=0;
     line.forEach(label => {
         if(i===22){
           tr.appendChild(make_col('', tag));
@@ -37,6 +37,13 @@ const make_row = (line, tag) => {
     i=0;
     line.forEach(label => {
         if(i===16){
+          tr.appendChild(make_col(label, tag));
+        }
+        i++;
+    });
+    i=0;
+    line.forEach(label => {
+        if(i===11){
           tr.appendChild(make_col(label, tag));
         }
         i++;
@@ -87,7 +94,7 @@ function f(){
       if(sortitems[i][18] == null){
         sortitems[i][18] = "";
       }
-      csv_body += `\r\n${sortitems[i][22]},${sortitems[i][16]},,${sortitems[i][21]},${sortitems[i][17]},${sortitems[i][18]},,Amazon販売書籍`;
+      csv_body += `\r\n${sortitems[i][22]},${sortitems[i][16]},,${sortitems[i][21]},${sortitems[i][17]},${sortitems[i][18]},様,Amazon販売書籍`;
     }
   }
 
