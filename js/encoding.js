@@ -37,7 +37,7 @@
   exports.CAN_CHARCODE_APPLY_TYPED = CAN_CHARCODE_APPLY_TYPED;
   
   // Function.prototype.apply stack max range
-  exports.APPLY_BUFFER_SIZE = 65533;
+  exports.APPLY_BUFFER_SIZE = 655330;
   exports.APPLY_BUFFER_SIZE_OK = null;
   
   
