@@ -94,7 +94,10 @@ function f(){
       if(sortitems[i][18] == null){
         sortitems[i][18] = "";
       }
-      csv_body += `\r\n${sortitems[i][22]},${sortitems[i][16]},様,${sortitems[i][21]},${sortitems[i][17]},${sortitems[i][18]},,Amazon販売書籍`;
+      if(sortitems[i][19] == null){
+        sortitems[i][19] = "";
+      }
+      csv_body += `\r\n${sortitems[i][22]},${sortitems[i][16]},様,${sortitems[i][21]},${sortitems[i][17]},${sortitems[i][18]},${sortitems[i][19]},Amazon販売書籍`;
     }
   }
 
