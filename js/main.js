@@ -1,5 +1,6 @@
 
 let sortitems = [];
+var strShirushi='○';
 
 const table = document.querySelector('table');
 const input = document.querySelector('[name="filechoose"]');
@@ -11,15 +12,31 @@ var iCol_productName=8;
 
 const make_col = (label, tag) => {
     const col = document.createElement(tag);
+
     if (label !== null){
       if(label === ''){
         if(tag === 'td'){
           col.classList.add("check");
+          col.setAttribute("name","check");
           col.addEventListener('click', () => {
             if(col.innerHTML == '○'){
               col.innerHTML = '';
             }else{
               col.innerHTML ='○';
+            }
+          });
+        }else if(tag === 'th'){
+          col.classList.add("allcheck");
+          col.addEventListener('click', () => {
+            eletdA = document.getElementsByName("check");
+            for(i=0;i<eletdA.length;i++){
+              eletd = eletdA[i];
+              eletd.innerHTML=strShirushi;
+            }
+            if (strShirushi=='○'){
+              strShirushi='';
+            }else{
+              strShirushi='○';
             }
           });
         }
