@@ -5,6 +5,10 @@ const table = document.querySelector('table');
 const input = document.querySelector('[name="filechoose"]');
 const reader = new FileReader();
 
+var iCol_shipPostalCode=22;
+var iCol_recipientName=16;
+var iCol_productName=8;
+
 const make_col = (label, tag) => {
     const col = document.createElement(tag);
     if (label !== null){
@@ -24,11 +28,40 @@ const make_col = (label, tag) => {
     }
     return col;
 }
+const make_hrow = (line, tag) => {
+  i=0;
+  const tr = document.createElement('tr');
+  line.forEach(label => {
+      if(label==='ship-postal-code'){
+        tr.appendChild(make_col('', tag));
+        tr.appendChild(make_col('郵便番号', tag));
+        iCol_shipPostalCode = i;
+      }
+      i++;
+  });
+  i=0;
+  line.forEach(label => {
+      if(label==='recipient-name'){
+        tr.appendChild(make_col('お客様名', tag));
+        iCol_recipientName = i;
+      }
+      i++;
+  });
+  i=0;
+  line.forEach(label => {
+      if(label==='product-name'){
+        tr.appendChild(make_col('商品名', tag));
+        iCol_productName = i;
+      }
+      i++;
+  });
+  return tr;
+}
 const make_row = (line, tag) => {
-    const tr = document.createElement('tr');
     i=0;
+    const tr = document.createElement('tr');
     line.forEach(label => {
-        if(i===22){
+        if(i===iCol_shipPostalCode){
           tr.appendChild(make_col('', tag));
           tr.appendChild(make_col(label, tag));
         }
@@ -36,14 +69,14 @@ const make_row = (line, tag) => {
     });
     i=0;
     line.forEach(label => {
-        if(i===16){
+        if(i===iCol_recipientName){
           tr.appendChild(make_col(label, tag));
         }
         i++;
     });
     i=0;
     line.forEach(label => {
-        if(i===11){
+        if(i===iCol_productName){
           tr.appendChild(make_col(label, tag));
         }
         i++;
@@ -54,8 +87,7 @@ const make_row = (line, tag) => {
 // 画面出力
 const show = (header) => {
     table.innerHTML = '';
-    table.appendChild(make_row(header, 'th'));
-
+    table.appendChild(make_hrow(header, 'th'));
     // 値
     sortitems.forEach(line => {
         table.appendChild(make_row(line, 'td'));
