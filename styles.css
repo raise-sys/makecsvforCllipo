@@ -22,6 +22,11 @@ td.check{
   text-align: center;
 }
 
+th.allcheck:hover{
+  /* background-color: #efefef; */
+  cursor: pointer;
+}
+
 td.check:hover{
   background-color: #efefef;
   cursor: pointer;
