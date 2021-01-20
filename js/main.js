@@ -185,7 +185,7 @@ const file_load = () => {
 
     // Excel出力されたCSVの最終行の空行を無視
     // Excel出力されたセル中の改行は\n、行末の改行は\r\n(macは行末\nかも...)
-    csv = csv.replace('"', ' ');
+    csv = csv.replaceAll('"', ' ');
     csv = csv.replace(/\r\n$/, '');
     // console.log(csv);
 
